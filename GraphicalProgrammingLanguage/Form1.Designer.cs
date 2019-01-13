@@ -30,17 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnopen = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnrun = new System.Windows.Forms.Button();
             this.txtLoadFile = new System.Windows.Forms.TextBox();
-            this.btnopen = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.PictureDraw = new System.Windows.Forms.PictureBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureDraw)).BeginInit();
             this.SuspendLayout();
@@ -48,6 +49,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btnopen);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.btnSave);
@@ -63,37 +65,6 @@
             this.panel2.Size = new System.Drawing.Size(911, 275);
             this.panel2.TabIndex = 3;
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(190)))));
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(909, 18);
-            this.panel3.TabIndex = 17;
-            // 
-            // btnrun
-            // 
-            this.btnrun.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnrun.ForeColor = System.Drawing.Color.Black;
-            this.btnrun.Location = new System.Drawing.Point(209, 219);
-            this.btnrun.Name = "btnrun";
-            this.btnrun.Size = new System.Drawing.Size(171, 51);
-            this.btnrun.TabIndex = 15;
-            this.btnrun.Text = "Run";
-            this.btnrun.UseVisualStyleBackColor = true;
-            this.btnrun.Click += new System.EventHandler(this.btnrun_Click);
-            // 
-            // txtLoadFile
-            // 
-            this.txtLoadFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLoadFile.Location = new System.Drawing.Point(11, 97);
-            this.txtLoadFile.Multiline = true;
-            this.txtLoadFile.Name = "txtLoadFile";
-            this.txtLoadFile.Size = new System.Drawing.Size(886, 114);
-            this.txtLoadFile.TabIndex = 16;
-            // 
             // btnopen
             // 
             this.btnopen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -104,6 +75,17 @@
             this.btnopen.Text = "Open";
             this.btnopen.UseVisualStyleBackColor = true;
             this.btnopen.Click += new System.EventHandler(this.btnopen_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(190)))));
+            this.label4.Location = new System.Drawing.Point(165, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(569, 32);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "GRAPHICAL PROGRAMMING APPLICATION";
             // 
             // btnSave
             // 
@@ -116,18 +98,13 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // PictureDraw
+            // panel4
             // 
-            this.PictureDraw.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PictureDraw.Location = new System.Drawing.Point(0, 275);
-            this.PictureDraw.Name = "PictureDraw";
-            this.PictureDraw.Size = new System.Drawing.Size(911, 376);
-            this.PictureDraw.TabIndex = 4;
-            this.PictureDraw.TabStop = false;
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(190)))));
+            this.panel4.Location = new System.Drawing.Point(1, 64);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(907, 10);
+            this.panel4.TabIndex = 30;
             // 
             // button2
             // 
@@ -160,24 +137,58 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // panel4
+            // panel3
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(190)))));
-            this.panel4.Location = new System.Drawing.Point(1, 64);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(907, 10);
-            this.panel4.TabIndex = 30;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(190)))));
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(909, 18);
+            this.panel3.TabIndex = 17;
             // 
-            // label4
+            // btnrun
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(190)))));
-            this.label4.Location = new System.Drawing.Point(165, 24);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(569, 32);
-            this.label4.TabIndex = 31;
-            this.label4.Text = "GRAPHICAL PROGRAMMING APPLICATION";
+            this.btnrun.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnrun.ForeColor = System.Drawing.Color.Black;
+            this.btnrun.Location = new System.Drawing.Point(209, 219);
+            this.btnrun.Name = "btnrun";
+            this.btnrun.Size = new System.Drawing.Size(171, 51);
+            this.btnrun.TabIndex = 15;
+            this.btnrun.Text = "Run";
+            this.btnrun.UseVisualStyleBackColor = true;
+            this.btnrun.Click += new System.EventHandler(this.btnrun_Click);
+            // 
+            // txtLoadFile
+            // 
+            this.txtLoadFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoadFile.Location = new System.Drawing.Point(11, 97);
+            this.txtLoadFile.Multiline = true;
+            this.txtLoadFile.Name = "txtLoadFile";
+            this.txtLoadFile.Size = new System.Drawing.Size(886, 114);
+            this.txtLoadFile.TabIndex = 16;
+            // 
+            // PictureDraw
+            // 
+            this.PictureDraw.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PictureDraw.Location = new System.Drawing.Point(0, 275);
+            this.PictureDraw.Name = "PictureDraw";
+            this.PictureDraw.Size = new System.Drawing.Size(911, 376);
+            this.PictureDraw.TabIndex = 4;
+            this.PictureDraw.TabStop = false;
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(28, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "label1";
             // 
             // Form1
             // 
@@ -211,6 +222,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label1;
     }
 }
 
