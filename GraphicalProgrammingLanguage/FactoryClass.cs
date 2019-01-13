@@ -8,7 +8,11 @@ using System.Drawing;
 namespace GraphicalProgrammingLanguage
 {
     class FactoryClass : Creator
-    {
+    {/// <summary>
+    /// This is the factory class which set validated sapes
+    /// </summary>
+    /// <param name="shapeType"></param>
+    /// <returns></returns>
         public override IShape getShape(string shapeType)
         {
             shapeType = shapeType.ToLower().Trim(); //yoi could argue that you want a specific word string to create an object but I'm allowing any case combination
@@ -32,6 +36,11 @@ namespace GraphicalProgrammingLanguage
             else if (shapeType.Equals("line"))
             {
                 return new Line();
+
+            }
+            else if (shapeType.Equals("3drectangle"))
+            {
+                return new _3dRectangle();
 
             }
             else

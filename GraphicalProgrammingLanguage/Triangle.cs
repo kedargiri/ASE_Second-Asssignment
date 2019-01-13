@@ -11,18 +11,29 @@ namespace GraphicalProgrammingLanguage
     {
 
       public  int x, y, width, height;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Triangle():base()
         {
             width = 0;
             height = 0;
-        }
+        }/// <summary>
+         /// This methord returns new triangle when called
+         /// </summary>
+         /// <param name="x"></param>
+         /// <param name="y"></param>
+         /// <param name="width"></param>
+         /// <param name="height"></param>
 
         public Triangle(int x, int y,int width, int height)
         {
             this.width = width;
             this.height = height;
-        }
+        }/// <summary>
+        /// this methord draw triangle on the graphic object
+        /// </summary>
+        /// <param name="g"></param>
 
         public void draw(Graphics g)
         {
@@ -40,7 +51,10 @@ namespace GraphicalProgrammingLanguage
             g.DrawPolygon(po, p);
             
 
-        }
+        }/// <summary>
+        /// this methord set the value of x,y,width and height
+        /// </summary>
+        /// <param name="list"></param>
         public void set(params int[] list)
         {
             this.x = list[0];

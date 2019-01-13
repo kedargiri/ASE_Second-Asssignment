@@ -452,6 +452,30 @@ namespace GraphicalProgrammingLanguage
                         }
                     }
                 }
+                else if (cmd[0].Equals("3drectangle") == true)
+                {
+                    if (cmd.Length < 2)
+                    {
+                        MessageBox.Show("Invalid Parameter ");
+                    }
+                    else
+                    {
+                        string[] param = cmd[1].Split(',');
+                        if (param.Length < 2)
+                        {
+                            MessageBox.Show("Invalid Parameter ");
+                        }
+                        else
+                        {
+                            Int32.TryParse(param[0], out width);
+                            Int32.TryParse(param[1], out height);
+                            IShape circle = factory.getShape("3drectangle");
+                            _3dRectangle r = new _3dRectangle();
+                            r.set(x, y, width, height);
+                            r.draw(g);
+                        }
+                    }
+                }
                 else if (cmd[0].Equals("triangle") == true)
                 {
                     string[] param = cmd[1].Split(',');
