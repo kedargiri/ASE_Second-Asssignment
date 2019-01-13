@@ -11,6 +11,8 @@ using System.IO;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Word;
 using Microsoft.Office.Interop.Excel;
+using WinFormsSyntaxHighlighter;
+
 
 
 namespace GraphicalProgrammingLanguage
@@ -22,6 +24,11 @@ namespace GraphicalProgrammingLanguage
         public Form1()
         {
             InitializeComponent();
+            var syntaxHighlighter = new SyntaxHighlighter(richtextbox);
+            syntaxHighlighter.AddPattern(new PatternDefinition("circle", "Rectangle", "int", "var"), new SyntaxStyle(Color.Blue));
+            syntaxHighlighter.AddPattern(new PatternDefinition("Circle", "rectangle", "int", "var"), new SyntaxStyle(Color.Blue));
+            syntaxHighlighter.AddPattern(new PatternDefinition("triangle", "3drectangle", "int", "var"), new SyntaxStyle(Color.Red));
+            syntaxHighlighter.AddPattern(new PatternDefinition("if", "loop","repeat","endloop","endif"), new SyntaxStyle(Color.Green));
         }
 
         Pen myPen = new Pen(Color.Red);
@@ -58,47 +65,65 @@ namespace GraphicalProgrammingLanguage
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Open File You Want TO Open";
-            //string text = File.ReadAllText(file);
-            // ofd.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
-            // ofd.Filter = "BackUp File(*.bak)|*.bak|All Files(*.*)|(*.*)";
-            ofd.Filter = "All Files (*.docx;*.Pdf;*.txt;)|*.docx;*.Pdf;*.txt;";
-            //           (*.BMP; *.JPG; *.GIF,*.PNG,*.TIFF)| *.BMP; *.JPG; *.GIF; *.PNG; *.TIFF | " +  
-            //"All files (*.*)|*.*";
-            ofd.FilterIndex = 0;
-            if (ofd.ShowDialog() == DialogResult.OK)
+            try
             {
-                txtLoadFile.Text = ofd.FileName;
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Title = "Open File You Want TO Open";
+                //string text = File.ReadAllText(file);
+                // ofd.Filter = "All files (*.*)|*.*|All files (*.*)|*.*";
+                // ofd.Filter = "BackUp File(*.bak)|*.bak|All Files(*.*)|(*.*)";
+                ofd.Filter = "All Files (*.docx;*.Pdf;*.txt;)|*.docx;*.Pdf;*.txt;";
+                //           (*.BMP; *.JPG; *.GIF,*.PNG,*.TIFF)| *.BMP; *.JPG; *.GIF; *.PNG; *.TIFF | " +  
+                //"All files (*.*)|*.*";
+                ofd.FilterIndex = 0;
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    richtextbox.Text = ofd.FileName;
+                }
             }
+            catch (Exception EX)
+            {
+
+                MessageBox.Show(EX.Message);
+            }
+
+            
 
         }
 
         private void btnopen_Click(object sender, EventArgs e)
         {
-            
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Word Documents|*.doc; *.docx;*.txt;*.pdf";
-
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application();
-                object miss = System.Reflection.Missing.Value;
-                object path = ofd.FileName;
-                object readOnly = true;
-                Microsoft.Office.Interop.Word.Document docs = word.Documents.Open(ref path, ref miss, ref readOnly,
-                    ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss,
-                    ref miss, ref miss, ref miss, ref miss);
-                var totaltextBuilder = new StringBuilder();
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Filter = "Word Documents|*.doc; *.docx;*.txt;*.pdf";
 
-
-                for (int i = 0; i < docs.Paragraphs.Count; i++)
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    totaltextBuilder.Append("\n" + docs.Paragraphs[i + 1].Range.Text.ToString());
-                }
-                docs.Close();
-                txtLoadFile.Text = totaltextBuilder.ToString();
+                    Microsoft.Office.Interop.Word.Application word = new Microsoft.Office.Interop.Word.Application();
+                    object miss = System.Reflection.Missing.Value;
+                    object path = ofd.FileName;
+                    object readOnly = true;
+                    Microsoft.Office.Interop.Word.Document docs = word.Documents.Open(ref path, ref miss, ref readOnly,
+                        ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss, ref miss,
+                        ref miss, ref miss, ref miss, ref miss);
+                    var totaltextBuilder = new StringBuilder();
 
+
+                    for (int i = 0; i < docs.Paragraphs.Count; i++)
+                    {
+                        totaltextBuilder.Append("\n" + docs.Paragraphs[i + 1].Range.Text.ToString());
+                    }
+                    docs.Close();
+                    richtextbox.Text = totaltextBuilder.ToString();
+
+                }
+
+            }
+            catch (Exception EX)
+            {
+
+                MessageBox.Show(EX.Message);
             }
 
 
@@ -107,7 +132,7 @@ namespace GraphicalProgrammingLanguage
 
 
 
-        }
+}
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -230,7 +255,7 @@ namespace GraphicalProgrammingLanguage
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 rng.Font.Name = "Calibri (Body)";
-                rng.InsertAfter(txtLoadFile.Text);
+                rng.InsertAfter(richtextbox.Text);
                 object filename = saveFileDialog1.FileName;
                 adoc.SaveAs(ref filename, ref missing, ref missing, ref missing, ref missing, ref missing,
                 ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing);
@@ -251,8 +276,8 @@ namespace GraphicalProgrammingLanguage
 
 
 
-            string command = txtLoadFile.Text.ToLower();
-            string[] commandline = command.Split(new String[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            string command = richtextbox.Text.ToLower();
+            string[] commandline = command.Split(new String[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             for (int k = 0; k < commandline.Length; k++)
             {
@@ -428,6 +453,23 @@ namespace GraphicalProgrammingLanguage
                     }
 
                 }
+                else if (cmd[0].Equals("texturecircle") == true)
+                {
+                    if (cmd.Length != 2)
+                    {
+                        MessageBox.Show("Incorrect Parameter");
+
+                    }
+                    else
+                    {
+                            Int32.TryParse(cmd[1], out radius);
+                            IShape circle = factory.getShape("texturecircle");
+                            TextureCircle c = new TextureCircle();
+                            c.set(x, y, radius);
+                            c.draw(g);
+                    }
+
+                }
                 else if (cmd[0].Equals("rectangle") == true)
                 {
                     if (cmd.Length < 2)
@@ -449,6 +491,33 @@ namespace GraphicalProgrammingLanguage
                             Rectangle r = new Rectangle();
                             r.set(x, y, width, height);
                             r.draw(g);
+                        }
+                    }
+                }
+                else if (cmd[0].Equals("polygon") == true)
+                {
+                    if (cmd.Length != 2)
+                    {
+                        MessageBox.Show("Invalid Parameter ");
+                    }
+                    else
+                    {
+                        string[] points = cmd[1].Split(',');
+                        if (points.Length < 4)
+                        {
+                            MessageBox.Show("Short Parameter for Polygon ");
+                        }
+                        else
+                        {
+                            int[] poi = new int[points.Length];
+                            for (int i=0;i<points.Length;i++)
+                            {
+                                Int32.TryParse(points[i], out poi[i]);
+                            }
+                            IShape circle = factory.getShape("polygon");
+                            Polygon p = new Polygon();
+                            p.set(poi);
+                            p.draw(g);
                         }
                     }
                 }

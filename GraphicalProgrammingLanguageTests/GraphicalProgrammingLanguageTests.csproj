@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GraphicalProgrammingLanguage\GraphicalProgrammingLanguage.csproj">
-      <Project>{631C4DA5-409A-4BE6-BC33-1B994E937E1F}</Project>
+      <Project>{631c4da5-409a-4be6-bc33-1b994e937e1f}</Project>
       <Name>GraphicalProgrammingLanguage</Name>
     </ProjectReference>
   </ItemGroup>

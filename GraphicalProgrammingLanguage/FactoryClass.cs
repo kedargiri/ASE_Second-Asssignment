@@ -43,6 +43,16 @@ namespace GraphicalProgrammingLanguage
                 return new _3dRectangle();
 
             }
+            else if (shapeType.Equals("polygon"))
+            {
+                return new Polygon();
+
+            }
+            else if (shapeType.Equals("texturecircle"))
+            {
+                return new TextureCircle();
+
+            }
             else
             {
                 //if we get here then what has been passed in is inkown so throw an appropriate exception

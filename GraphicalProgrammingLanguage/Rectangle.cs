@@ -32,8 +32,17 @@ namespace GraphicalProgrammingLanguage
          /// <param name="g"></param>
         public void draw(Graphics g)
         {
-            Pen p = new Pen(Color.Black, 2);
-            g.DrawRectangle(p, x - (width / 2), y - (height / 2), width * 2, height * 2);
+            try
+            {
+                Pen p = new Pen(Color.Black, 2);
+                g.DrawRectangle(p, x - (width / 2), y - (height / 2), width * 2, height * 2);
+            }
+            catch (Exception EX)
+            {
+
+                throw EX;
+            }
+            
         }
         /// <summary>
         /// this set the value of x, y, width and height
@@ -41,10 +50,19 @@ namespace GraphicalProgrammingLanguage
         /// <param name="list"></param>
         public void set(params int[] list)
         {
-            this.x = list[0];
-            this.y = list[1];
-            this.width = list[2];
-            this.height = list[3];
+            try
+            {
+                this.x = list[0];
+                this.y = list[1];
+                this.width = list[2];
+                this.height = list[3];
+            }
+            catch (Exception EX)
+            {
+
+                throw EX;
+            }
+            
         }
     }
 }

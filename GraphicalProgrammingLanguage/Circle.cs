@@ -31,8 +31,17 @@ namespace GraphicalProgrammingLanguage
         /// <param name="g"></param>
         public void draw(Graphics g)
         {
-            Pen p = new Pen(Color.Black, 2);
-            g.DrawEllipse(p, x-radius, y-radius, radius * 2, radius * 2);
+            try
+            {
+                Pen p = new Pen(Color.Black, 2);
+                g.DrawEllipse(p, x - radius, y - radius, radius * 2, radius * 2);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
 
         /// <summary>
@@ -41,9 +50,18 @@ namespace GraphicalProgrammingLanguage
         /// <param name="list"></param>
         public void set(params int[] list)
         {
-            this.x = list[0];
-            this.y = list[1];
-            this.radius = list[2];
+            try
+            {
+                this.x = list[0];
+                this.y = list[1];
+                this.radius = list[2];
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+           
         }
 
 
